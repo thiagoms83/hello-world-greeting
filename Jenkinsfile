@@ -1,4 +1,5 @@
-node('docker') { 
+node('docker') {
+  env.JAVA_HOME="${tool 'java_slave'}"
   stage('Poll') { 
     checkout scm
   } 
