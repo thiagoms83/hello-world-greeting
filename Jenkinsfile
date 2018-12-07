@@ -10,7 +10,7 @@ node('docker') {
     archive 'target/*.jar' 
   } 
   stage(' Static Code Analysis') {
-    sh 'mvn clean verify sonar:sonar -Dsonar.projectName = example-project -Dsonar.projectKey = example-project -Dsonar.projectVersion = $ BUILD_NUMBER'; 
+    sh 'mvn clean verify sonar:sonar -Dsonar.host.url=http://172.17.0.1:9000 -Dsonar.login=881dbcfad6da09296c2bf24b6c2c30e0311c8a7b -Dsonar.projectName=example-project -Dsonar.projectKey=example-project -Dsonar.projectVersion=$BUILD_NUMBER'; 
   } 
   stage (' Integration Test') { 
     sh 'mvn clean verify -Dsurefire.skip=true'; 
