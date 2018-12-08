@@ -1,3 +1,4 @@
+
 node('docker') {
   env.JAVA_HOME="${tool 'java_slave'}"
   stage('Poll') { 
@@ -24,4 +25,10 @@ node('docker') {
                    mavenCoordinate: [artifactId: 'hello', groupId: 'org.jenkins-ci.main', 
                                      packaging: 'war', version: '0.0.1']]]
    }
+  
+}
+  node ('production') { 
+stage ('Deploy to Prod') { 
+sh 'wget http://localhost:8081/nexus/content/repositories/releases/org/jenkins-ci/main/hello/0.0.1/hello-0.0.1.war'
+}
 }
