@@ -29,6 +29,6 @@ node('docker') {
 }
   node ('production') { 
 stage ('Deploy to Prod') { 
-sh 'wget http://localhost:8081/nexus/content/repositories/releases/org/jenkins-ci/main/hello/0.0.1/hello-0.0.1.war'
+sh 'wget http://172.17.0.1:8081/nexus/content/repositories/releases/org/jenkins-ci/main/hello/0.0.1/hello-0.0.1.war'
 }
 }
